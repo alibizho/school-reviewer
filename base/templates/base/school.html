@@ -1,0 +1,249 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{%  block content %}
+<style>
+
+    .factor{
+        width:45%
+    }
+
+    .unset-height{
+        height:90px;
+    }
+
+    @media (max-width: 1400px){
+
+         .card-review{
+            display:none !important;
+        }
+    }
+
+
+
+    @media (max-width: 767.98px) {
+        .unset-height{
+            height:150px;
+            padding-right:1em;
+         }
+         .card-review{
+            display:none !important;
+        }
+        .factor{
+            width:100% !important;
+        }
+     }
+
+     @media (max-width: 575.98px){
+        .factor{
+            width:100% !important;
+        }
+    }
+
+
+</style>
+
+
+    <div class="container">
+        <div class="mt-5 shadow-sm p-3 mb-3  rounded d-flex justify-content-between sticky-top card-color">
+            <h1 class=" justify-content-center ms-2 mt-2">
+                <strong>
+                {{schools.name}}
+                </strong>
+            </h1>
+            <a href="{% url 'review' schools.id %}" class="btn align-self-center" style="width:68px; background-color:#C69D0B;">Rate</a>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mx-auto ">
+                <div class="d-flex align-center flex-column justify-content-center mt-3 mb-3">
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center box-overall-quality">
+                            <h1 class="align-self-center" style="font-size:50px; font-weight:700; color: #A38D5E;margin:0;">{{schools.rating}}</h1>
+                        </div>
+                    </div>
+                    <p class="mb-2 mt-1  align-self-center" style="font-size:16px; color:white;">Overall Rating</p>
+
+                    <div class="d-flex flex-column align-center justify-content-center mt-3 mb-2">
+                        <div class="row mt-2 mb-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
+                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
+                                        <div style="color:white">Location</div>
+                                        <div class="">
+                                            <div class="" style="color:#A38D5E">{{schools.rating_location}}</div> <!-- TODO: make a box and center the number -->
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem;">
+                                        <div style="color:white">Opportunities</div>
+                                        <div style="color:#A38D5E">{{schools.rating_opportunities}}</div>
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
+                                        <div style="color:white">Facilities</div>
+                                        <div style="color:#A38D5E">{{schools.rating_facilities}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
+                                    <div class="d-inline-flex align-items justify-content-between food-equalizer mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                        <div style="color:white">Food</div>
+                                        <div style="color:#A38D5E">{{schools.rating_food}}</div>
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                        <div style="color:white">Clubs</div>
+                                        <div style="color:#A38D5E">{{schools.rating_clubs}}</div>
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                        <div style="color:white">Social</div>
+                                        <div style="color:#A38D5E">{{schools.rating_social}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for review in reviews %}
+            <div class="col-lg-6 col-sm-12 col-md-12">
+
+
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row my-2 shadow p-3 mb-4" style="padding: 20px 24px 32px; width:100%; background-color:#1C2635; color:white; border-radius: 14px; ">
+
+
+                        <div class="d-flex flex-column ms-1 " style="width:100%">
+                            {% if review.overall >= 4 %}
+                                <div class="d-flex flex-row align-items justify-content-between mt-2 mb-2 gap-1">
+                                    <div class=" text-center align-self-center overall-phone-review-amazing" >AMAZING</div>
+                                    <div style="padding-right:1em; font-size:1em;"><small>{{review.created|date}}</small></div>
+                                </div>
+
+                            {% elif review.overall >= 3 and review.overall <= 4 %}
+                                <div class="d-flex flex-row align-items justify-content-between">
+                                    <div class="text-center align-self-center overall-phone-review-average" >AVERAGE</div>
+                                    <div style="padding-right:1em; font-size:1em"><small>{{review.created|date}}</small></div>
+                                </div>
+
+                            {% else %}
+                                <div class="d-flex flex-row align-items justify-content-between ">
+                                    <div class="text-center align-self-center overall-phone-review-awful" >AWFUL</div>
+                                    <div style="padding-right:1em; font-size:1em"><small>{{review.created|date}}</small></div>
+                                </div>
+
+                            {% endif %}
+
+                            <div class="mt-2 text-break" >
+                                <p class="" style="max-width:90%;">{{review.body}}</p>
+
+                            </div>
+
+                            <div>
+                                <div class="d-flex flex-column flex-wrap align-items justify-content-between mt-2 unset-height  " style="column-gap:30px;"  >
+                                    <div class="d-inline-flex align-items justify-content-between factor" >
+                                        <div class="fw-bold me-2" >Location</div>
+                                        {% if review.location == 1 %}
+                                            <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.location == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.location == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.location == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.location == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between factor" >
+                                        <div class="fw-bold me-2">Opportunities</div>
+                                        {% if review.opportunities == 1 %}
+                                        <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.opportunities == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.opportunities == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.opportunities == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.opportunities == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between factor" >
+                                        <div class="fw-bold me-4">Facilities</div>
+                                        {% if review.facilities == 1 %}
+                                        <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.facilities == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.facilities == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.facilities == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.facilities == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between factor" >
+                                        <div class="fw-bold me-2">Food</div>
+                                        {% if review.food == 1 %}
+                                        <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.food == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.food == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.food == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.food == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between factor">
+                                        <div class="fw-bold me-2">Clubs</div>
+                                        {% if review.clubs == 1 %}
+                                        <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.clubs == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.clubs == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.clubs == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.clubs == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-inline-flex align-items justify-content-between factor">
+                                        <div class="fw-bold me-2">Social</div>
+                                        {% if review.social == 1 %}
+                                        <div><img class="pb-1" src="{% static 'images/one_stars.svg' %}"/></div>
+                                        {% elif review.social == 2 %}
+                                        <div><img class="pb-1" src="{% static 'images/two_stars.svg' %}"/></div>
+                                        {% elif review.social == 3 %}
+                                        <div><img class="pb-1" src="{% static 'images/three_stars.svg' %}"/></div>
+                                        {% elif review.social  == 4 %}
+                                        <div><img class="pb-1" src="{% static 'images/four_stars.svg' %}"/></div>
+                                        {% elif review.social == 5 %}
+                                        <div><img class="pb-1" src="{% static 'images/five_stars.svg' %}"/></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}

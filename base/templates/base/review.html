@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <img class="top-left-review-stroke" src="{% static 'images/top_left_review_stroke.svg' %}"/>
+
+    <form class="d-flex flex-column justify-content-center align-items-center" action="" method="POST">
+        {% csrf_token %}
+
+        <div class="row" style="width:85%">
+
+            <div class="mt-5 shadow-sm p-3 mb-3  d-flex justify-content-around sticky-top card-color" style="border-radius:14px; ">
+                <h1 class=" justify-content-center">
+                    <strong>
+                        {{schools.name}}
+                    </strong>
+                </h1>
+            </div>
+        </div>
+        <hr>
+
+
+        {% for field in form %}
+            <div class="row w-75 ">
+                <div>
+                    {% if field.label == "Body" %}
+                    <label class="form-label fw-bold align-self-center" style="color:white;">Write a review</label>
+                    {% else %}
+                    <label class="form-label fw-bold align-self-center" style="color:white;">{{field.label}}</label>
+                    {% endif %}
+                    {{field}}
+                    <br>
+                    <hr>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="mb-5 mt-2 text-center"><button class="btn btn-lg profile-button rounded px-4" type="submit" value="Submit" style="background-color:#C69D0B;">Submit Rating</button></div>
+    </form>
+</div>
+
+{% endblock %}

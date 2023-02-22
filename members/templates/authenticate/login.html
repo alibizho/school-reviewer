@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height:80vh;">
+
+    <img class="top-left-stroke" src="{% static 'images/top_left_stroke.png' %}"  style="z-index:1;" />
+    <img class="bottom-right-stroke" src="{% static 'images/bottom_right_stroke.svg' %}" style="z-index:1;" />
+    <img class="atom-right" src="{% static 'images/atom.svg' %}"   style="z-index:1;"/>
+    <img class="saturn-left" src="{% static 'images/saturn.svg' %}"  style="z-index:1;"/>
+    <img class="rocket-right"  src="{% static 'images/rocket.svg' %}" style="z-index:1;" />
+    <img class="saturn-right" src="{% static 'images/saturn_right.svg' %}"  style="z-index:1;" />
+    <img class="telescope" src="{% static 'images/telescope.svg' %}"  style="z-index:1;" />
+    <img class="earth-left" src="{% static 'images/earth_left.svg' %}"  style="z-index:1;" />
+
+
+  <div class="row d-flex flex-column align-items-center justify-content-center" style="z-index:3">
+    <div class="p-3 py-5 d-flex flex-column  justify-content-center">
+      <div class="col-md-12 text-center">
+        <h4 class="text-center fw-bold mb-4" style="color:#A38D5E">Login</h4>
+      </div>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mx-auto w-90">
+          <label class="form-label" style="color:#A38D5E;">Username</label>
+          <input type="text" class="form-control" name="username" />
+
+          <label class="form-label mt-3" style="color:#A38D5E;">Password</label>
+          <input type="password" class="form-control" name="password" />
+        </div>
+        <div class="mt-5 text-center"><button class="btn profile-button" type="submit" value="Submit" style="background-color:#C69D0B;">Login</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

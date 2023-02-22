@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container d-flex align-items-center justify-content-center flex-column" style="height:80vh;">
+
+        <img class="top-left-stroke" src="{% static 'images/top_left_stroke.png' %}" />
+        <img class="bottom-right-stroke" src="{% static 'images/bottom_right_stroke.svg' %}" />
+        <img class="atom-right" src="{% static 'images/atom.svg' %}" />
+        <img class="saturn-left" src="{% static 'images/saturn.svg' %}"/>
+        <img class="rocket-right"  src="{% static 'images/rocket.svg' %}" />
+        <img class="saturn-right" src="{% static 'images/saturn_right.svg' %}" />
+        <img class="telescope" src="{% static 'images/telescope.svg' %}" />
+        <img class="earth-left" src="{% static 'images/earth_left.svg' %}" />
+
+
+        <div class="row">
+            <div class="col text-center mb-4">
+                <h1 class="title-text-w">Найди отзывы о любых школах <mark class="title-text-g">Казахстана</mark></h1>
+            </div>
+            <div class="input-group justify-content-center">
+
+                <div class="col-sm-6 col-md-6" >
+                    <div id="autocomplete" class="autocomplete">
+                        <input class="autocomplete-input"
+                               placeholder="Школа-гимназия 17"
+                               aria-label="Школа-гимназия 17" />
+                        <ul class="autocomplete-result-list"></ul>
+                    </div>
+<!--                    <form method="get">-->
+<!--                        <input name="q" class="form-control p-2 px-5 rounded-pill" type="text"/>-->
+<!--                    </form>-->
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            {% comment %}
+            {% for school in schools %}
+            <div class="pb-2">
+                <a href="{% url 'school' school.id %}">{{school.name}}</a>
+            </div>
+            <br/>
+            {% endfor %}
+            {% endcomment %}
+        </div>
+    </div>
+<script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+
+    <script>
+
+
+
+        new Autocomplete('#autocomplete', {
+            search: input => {
+                const url = `/search/?school=${input}`
+                return new Promise(resolve =>{
+                    fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        resolve(data.data)
+                    })
+                })
+            },
+
+            getResultValue : result => {
+                return result.name;
+            },
+
+            onSubmit : result => {
+                window.open(`/school/${result.id}`)
+            }
+        })
+    </script>
+
+
+{% endblock %}
