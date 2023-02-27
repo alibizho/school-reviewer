@@ -46,7 +46,7 @@
 
     <div class="container">
         <div class="mt-5 shadow-sm p-3 mb-3  rounded d-flex justify-content-between sticky-top card-color">
-            <h1 class=" justify-content-center ms-2 mt-2">
+            <h1 class=" justify-content-center ms-2 mt-2 me-1">
                 <strong>
                 {{schools.name}}
                 </strong>
@@ -54,49 +54,52 @@
             <a href="{% url 'review' schools.id %}" class="btn align-self-center" style="width:68px; background-color:#C69D0B;">Rate</a>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6 mx-auto ">
-                <div class="d-flex align-center flex-column justify-content-center mt-3 mb-3">
-                    <div class="d-flex justify-content-center">
-                        <div class="d-flex justify-content-center box-overall-quality">
-                            <h1 class="align-self-center" style="font-size:50px; font-weight:700; color: #A38D5E;margin:0;">{{schools.rating}}</h1>
-                        </div>
-                    </div>
-                    <p class="mb-2 mt-1  align-self-center" style="font-size:16px; color:white;">Overall Rating</p>
+        {% if schools.rating is None %}
 
-                    <div class="d-flex flex-column align-center justify-content-center mt-3 mb-2">
-                        <div class="row mt-2 mb-3">
-                            <div class="col-lg-6">
-                                <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
-                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
-                                        <div style="color:white">Location</div>
-                                        <div class="">
-                                            <div class="" style="color:#A38D5E">{{schools.rating_location}}</div> <!-- TODO: make a box and center the number -->
+            <div class="row">
+                <div class="col-lg-6 mx-auto ">
+                    <div class="d-flex align-center flex-column justify-content-center mt-3 mb-3">
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center box-overall-quality">
+                                <h1 class="align-self-center" style="font-size:50px; font-weight:700; color: #A38D5E;margin:0;">{{schools.rating}}</h1>
+                            </div>
+                        </div>
+                        <p class="mb-2 mt-1  align-self-center" style="font-size:16px; color:white;">Overall Rating</p>
+
+                        <div class="d-flex flex-column align-center justify-content-center mt-3 mb-2">
+                            <div class="row mt-2 mb-3">
+                                <div class="col-lg-6">
+                                    <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
+                                        <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
+                                            <div style="color:white">Location</div>
+                                            <div class="">
+                                                <div class="" style="color:#A38D5E">{{schools.rating_location}}</div> <!-- TODO: make a box and center the number -->
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem;">
+                                            <div style="color:white">Opportunities</div>
+                                            <div style="color:#A38D5E">{{schools.rating_opportunities}}</div>
+                                        </div>
+                                        <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
+                                            <div style="color:white">Facilities</div>
+                                            <div style="color:#A38D5E">{{schools.rating_facilities}}</div>
                                         </div>
                                     </div>
-                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem;">
-                                        <div style="color:white">Opportunities</div>
-                                        <div style="color:#A38D5E">{{schools.rating_opportunities}}</div>
-                                    </div>
-                                    <div class="d-inline-flex align-items justify-content-between rating-equalizer ms-5 " style="margin-right:1rem; ">
-                                        <div style="color:white">Facilities</div>
-                                        <div style="color:#A38D5E">{{schools.rating_facilities}}</div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
-                                    <div class="d-inline-flex align-items justify-content-between food-equalizer mx-5" style="margin-right:6rem; margin-left:5rem;">
-                                        <div style="color:white">Food</div>
-                                        <div style="color:#A38D5E">{{schools.rating_food}}</div>
-                                    </div>
-                                    <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
-                                        <div style="color:white">Clubs</div>
-                                        <div style="color:#A38D5E">{{schools.rating_clubs}}</div>
-                                    </div>
-                                    <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
-                                        <div style="color:white">Social</div>
-                                        <div style="color:#A38D5E">{{schools.rating_social}}</div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex flex-column flex-wrap align-items justify-content-between gap-2">
+                                        <div class="d-inline-flex align-items justify-content-between food-equalizer mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                            <div style="color:white">Food</div>
+                                            <div style="color:#A38D5E">{{schools.rating_food}}</div>
+                                        </div>
+                                        <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                            <div style="color:white">Clubs</div>
+                                            <div style="color:#A38D5E">{{schools.rating_clubs}}</div>
+                                        </div>
+                                        <div class="d-inline-flex align-items justify-content-between mx-5" style="margin-right:6rem; margin-left:5rem;">
+                                            <div style="color:white">Social</div>
+                                            <div style="color:#A38D5E">{{schools.rating_social}}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +107,20 @@
                     </div>
                 </div>
             </div>
+
+        {% else %}
+
+        <div class="container" style="height:50vh;">
+            <div class="d-flex justify-content-center" style="height:50vh;">
+                <div class="d-flex align-center flex-column justify-content-center mt-3 mb-3">
+                    <h1 class="align-self-center justify-self-center text-center" style="font-size:42px; font-weight:400; color: #A38D5E;margin:0;">There are no ratings...</h1>
+                </div>
+            </div>
         </div>
+
+        {% endif %}
+
+
 
         <div class="row">
             {% for review in reviews %}

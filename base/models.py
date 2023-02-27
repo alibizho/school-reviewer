@@ -14,7 +14,6 @@ RATE_CHOICES = [
 
 class School(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
     rating = models.IntegerField(blank=True, null=True)
     rating_location = models.IntegerField(blank=True, null=True)
     rating_opportunities = models.IntegerField(blank=True, null=True)

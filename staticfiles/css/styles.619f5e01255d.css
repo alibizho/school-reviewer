@@ -1,0 +1,256 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Inter', sans-serif;
+    font-weight:400;
+
+}
+
+
+body{
+    background-color: #2C3D57 !important;
+}
+
+nav{
+    background-color: #1C2635;
+    height:70px;
+}
+
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(163,141,94, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+
+
+}
+
+
+
+
+.title-text-w{
+    color:white;
+    font-size:25px;
+    line-height:1.25em;
+}
+
+.title-text-g{
+    color:#A38D5E;
+    background:none;
+    font-size:25px;
+    padding:0;
+}
+
+.autocomplete-input{
+    border-radius: 21px !important;
+    background-image: url("../images/search_icon.1e38d212e196.svg") !important;
+    background-color: #1C2635 !important;
+    border: #1C2635 !important;
+    padding-left: 48px !important;
+    height:60px;
+    color: #A38D5E !important;
+}
+
+.autocomplete-input::placeholder{
+    color:#A38D5E !important;
+}
+
+.autocomplete-result-list{
+    background-color: #1C2635 !important;
+    color: #A38D5E !important;
+}
+
+.autocomplete-result {
+    background-image: url("../images/search_icon.1e38d212e196.svg") !important;
+    background-repeat: no-repeat !important;
+}
+
+
+.overall-phone-review-amazing{
+    background-color:#478A6A;
+    font-size:0.75rem;
+    width:90px;
+    height:30px;
+    border-radius: 9px;
+    padding-left: 0.25rem;
+    padding-right:0.25rem;
+    padding-bottom:0.25rem;
+    padding-top:0.4rem !important;
+}
+
+.overall-phone-review-average{
+    background-color:#C49A1D;
+    font-size:0.75rem;
+    width:90px;
+    height:30px;
+    border-radius: 9px;
+    padding-left: 0.25rem;
+    padding-right:0.25rem;
+    padding-bottom:0.25rem;
+    padding-top:0.4rem !important;
+}
+
+.overall-phone-review-awful{
+    background-color:#D94D21;
+    font-size:0.75rem;
+    width:90px;
+    height:30px;
+    border-radius: 9px;
+    padding-left: 0.25rem;
+    padding-right:0.25rem;
+    padding-bottom:0.25rem;
+    padding-top:0.4rem !important;
+}
+
+.box-overall-rating{
+    width: 28px;
+    height: 28px;
+    background: #1C2635;
+    border-radius: 2px;
+}
+
+.box-overall-quality{
+    background:transparent;
+}
+
+
+
+
+.top-left-stroke{
+    position:absolute;
+    left: -12px;
+    top: 69px;
+}
+
+.bottom-right-stroke{
+    position:absolute;
+    bottom: 0;
+    right: 3px;
+}
+
+.atom-right{
+    position:absolute;
+    left: 70%;
+    right: -7.62%;
+    top: 15%;
+    bottom: 73.01%;
+    transform: rotate(150deg);
+}
+
+.saturn-left{
+    position:absolute;
+    left: -10px;
+    bottom: 120px;
+}
+
+.rocket-right{
+    position:absolute;
+    right: 10%;
+    bottom: 20%;
+    transform: rotate(354deg);
+}
+
+.saturn-right{
+    display:none;
+}
+
+.telescope{
+    display:none;
+}
+
+.earth-left{
+    display:none;
+}
+
+.card-color{
+    background-color: #1C2635 !important;
+    color: #A38D5E !important;
+}
+
+
+.form-control{
+    border: #1C2635 !important;
+    background-color:#1C2635 !important;
+    color:white !important;
+}
+
+.form-range::-webkit-slider-thumb{
+    background: #A38D5E !important;
+}
+.form-range::-webkit-slider-runnable-track {
+    background-color:black !important;
+}
+
+.top-left-review-stroke{
+    display:none;
+}
+
+@media screen and (max-width:992px){
+    .rating-equalizer{
+        margin-right:3rem !important;
+    }
+    .food-equalizer{
+        margin-top:0.4rem;
+    }
+}
+
+
+ @media screen and (min-width: 1200px){
+    .rocket-right{
+        position:absolute;
+        left: 10.33%;
+        right: 75.24%;
+        top: 15.32%;
+        width:160px;
+        transform: rotate(63deg);
+    }
+    .top-left-stroke{
+        display:none;
+    }
+    .bottom-right-stroke{
+        display:none;
+    }
+    .atom-right{
+        display:none;
+    }
+    .saturn-left{
+        display:none;
+    }
+    .saturn-right{
+        display:unset;
+        position:absolute;
+        width:170px;
+        right:9em;
+        bottom:5em;
+    }
+    .telescope{
+        display:unset;
+        position:absolute;
+        width:150px;
+        right:6em;
+        top:5em;
+    }
+    .earth-left{
+        display:unset;
+        position:absolute;
+        left:0;
+        bottom:0;
+    }
+    .autocomplete-input::placeholder{
+        text-align:inherit;
+    }
+    .top-left-review-stroke{
+        display:unset;
+        position:absolute;
+        top:4.3em;
+        left:-1em;
+    }
+    .box-overall-quality{
+        height:95px;
+        width:90px;
+        background-color:#1C2635;
+        border-radius:20px;
+    }
+
+ }
+

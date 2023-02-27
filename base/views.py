@@ -34,26 +34,26 @@ def school(request, pk):
     reviewz = schools.review_set.all()
     sum_nums = []
 
+    if reviewz:
 
+        for review in reviewz:
+            sum_nums.append(round((review.location +
+                              review.opportunities + review.facilities + review.food
+                              + review.clubs + review.social) / 6))
+            review.overall = round((review.location +
+                                    review.opportunities + review.facilities + review.food
+                                    + review.clubs + review.social) / 6)
+            review.save()
 
-    for review in reviewz:
-        sum_nums.append(round((review.location +
-                          review.opportunities + review.facilities + review.food
-                          + review.clubs + review.social) / 6))
-        review.overall = round((review.location +
-                                review.opportunities + review.facilities + review.food
-                                + review.clubs + review.social) / 6)
-        review.save()
-
-    schools.rating = (sum(sum_nums) / len(sum_nums))
-    schools.rating = round(schools.rating, 1)
-    schools.rating_location = round(reviewz.aggregate(Avg('location'))['location__avg'], 1)
-    schools.rating_opportunities = round(reviewz.aggregate(Avg('opportunities'))['opportunities__avg'], 1)
-    schools.rating_facilities = round(reviewz.aggregate(Avg('facilities'))['facilities__avg'], 1)
-    schools.rating_food = round(reviewz.aggregate(Avg('food'))['food__avg'], 1)
-    schools.rating_clubs = round(reviewz.aggregate(Avg('clubs'))['clubs__avg'], 1)
-    schools.rating_social = round(reviewz.aggregate(Avg('social'))['social__avg'], 1)
-    schools.save()
+        schools.rating = (sum(sum_nums) / len(sum_nums))
+        schools.rating = round(schools.rating, 1)
+        schools.rating_location = round(reviewz.aggregate(Avg('location'))['location__avg'], 1)
+        schools.rating_opportunities = round(reviewz.aggregate(Avg('opportunities'))['opportunities__avg'], 1)
+        schools.rating_facilities = round(reviewz.aggregate(Avg('facilities'))['facilities__avg'], 1)
+        schools.rating_food = round(reviewz.aggregate(Avg('food'))['food__avg'], 1)
+        schools.rating_clubs = round(reviewz.aggregate(Avg('clubs'))['clubs__avg'], 1)
+        schools.rating_social = round(reviewz.aggregate(Avg('social'))['social__avg'], 1)
+        schools.save()
 
 
 
