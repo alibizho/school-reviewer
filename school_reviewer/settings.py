@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['school-reviewer-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://school-reviewer-production.up.railway.app']
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
