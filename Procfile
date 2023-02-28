@@ -1,1 +1,1 @@
-web: gunicorn school_reviewer.wsgi --log-file
+web: gunicorn school_reviewer.wsgi --log-file -
